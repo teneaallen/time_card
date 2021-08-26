@@ -1,0 +1,26 @@
+CREATE TABLE time_card_replica (
+  day varchar(3),
+  schedule text,
+  a_start time timetz,
+  b_out time timetz,
+  b_in time timetz,
+  a_end time timetz,
+  num_daily_hrs interval
+);
+
+INSERT INTO time_card_replica
+VALUES
+  ('Mon', '2021-08-23', '9:00', '09:07 PST', '01:27 PST', '01:58 PST', '05:38 PST', '8 hours'),
+	('Tue', '2021-08-24', '9:00', '08:56 PST', '01:21 PST', '01:54 PST', '05:44 PST', '16 hours'),
+	('Wed', '2021-08-25', '9:00', '09:01 PST', '01:08 PST', '01:49 PST', '05:41 PST', '24 hours'),
+	('Thu', '2021-08-26', '9:00', '08:55 PST', '01:20 PST', '01:54 PST', '05:34 PST', '32 hours'),
+	('Fri', '2021-08-27', '9:00', '08:55 PST', '01:17 PST', '01:48 PST', '05:31 PST', '40 hours');
+  
+SELECT 
+  day,
+  schedule,
+  a_start,
+  b_out,
+  b_in,
+  a_end
+  (a_end - a_start) - (b_in
